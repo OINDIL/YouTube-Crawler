@@ -11,10 +11,10 @@ function SearchBar({getData}) {
     return (
         <div>
             <div className="container input-group mb-3" style={{maxWidth:'600px'}}>
-                <input type="text" className="form-control" placeholder="Search For Youtube Channels" aria-label="Recipient's username" aria-describedby="button-addon2"
+                <input type="text" className="form-control" placeholder="Search on YouTube" aria-label="Recipient's username" aria-describedby="button-addon2"
                 onChange={handleInput}
                 />
-                    <button className="btn btn-primary" type="button" id="button-addon2" onClick={handleClick}>Search</button>
+                    <button className="btn btn-danger" type="button" id="button-addon2" onClick={handleClick}>Search</button>
             </div>
         </div>
     )

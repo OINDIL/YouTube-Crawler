@@ -53,6 +53,7 @@ function Homepage() {
                         description={item.snippet.description}
                         thumbnail={item.snippet.thumbnails.high.url}
                         link={item.id.videoId}
+                        publishedAt={item.snippet.publishedAt}
                         />
                     </div>
                 )
