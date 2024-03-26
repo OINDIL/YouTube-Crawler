@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SearchBar from './SmallComponents/SearchBar'
 import Card from './SmallComponents/Card'
+import Empty from './SmallComponents/Empty'
 function Homepage() {
     // states
     const [youtubeData,setYoutubeData] = useState([])
@@ -20,7 +21,7 @@ function Homepage() {
         }
     }
     useEffect(()=>{
-        youtubeApi('python')
+        // youtubeApi('python')
     },[])
     console.log(youtubeData);
   return (
@@ -28,7 +29,7 @@ function Homepage() {
         <div className="container mt-3">
             <SearchBar/>
         </div>
-        <div className="container-fluid d-flex flex-wrap">
+        {youtubeData.length !== 0 ? <div className="container-fluid d-flex flex-wrap">
             {youtubeData.map((item)=>{
                 return(
                     <div key={item.snippet.title}>
@@ -37,7 +38,8 @@ function Homepage() {
                     </div>
                 )
             })}
-        </div>
+        </div> : <Empty/>}
+        
     </div>
   )
 }
