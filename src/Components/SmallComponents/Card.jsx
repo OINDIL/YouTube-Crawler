@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Card({ title, description, thumbnail, link, channelTitle, publishedAt }) {
+function Card({ title, description, thumbnail, videoId, channelTitle, publishedAt }) {
   let date = new Date(publishedAt)
   var year = date.getFullYear();
   var month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
@@ -13,7 +13,7 @@ function Card({ title, description, thumbnail, link, channelTitle, publishedAt }
         <img src={`${thumbnail}`} className="card-img-top" alt="" />
         <div className="card-body">
           <h5 className="card-title">{`${title.slice(0, 20)}...`}</h5>
-          <h6 class="card-subtitle text-body-secondary">{channelTitle}</h6>
+          <h6 className="card-subtitle text-body-secondary">{channelTitle}</h6>
           <p className="card-text">{`${description.slice(0, 70)}...`}</p>
         </div>
         <ul className="list-group list-group-flush">
@@ -21,7 +21,7 @@ function Card({ title, description, thumbnail, link, channelTitle, publishedAt }
           <li className="list-group-item">A third item</li>
         </ul>
         <div className="card-body">
-          <a href={`https://www.youtube.com/watch?v=${link}`} target='_blank'>Watch Video</a>
+          <a href={`https://www.youtube.com/watch?v=${videoId}`} target='_blank'>Watch Video</a>
         </div>
       </div>
     </div>

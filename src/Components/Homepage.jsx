@@ -10,7 +10,7 @@ function Homepage() {
     const [loader, setLoader] = useState(false)
     const [progress, setProgress] = useState(0)
 
-    const youtubeApi = async (query) =>{
+    const videoInfo = async (query) =>{
         setLoader(true)
         try{
             const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=AIzaSyAbtu-vPTd_dCckkdsSimbzq2MC41B0dxw`
@@ -25,15 +25,16 @@ function Homepage() {
         }
         catch(err){
             alert(err)
+            setProgress(100)
         }
     }
     //! Getting data from search bar
     const getData = (value) =>{
-        youtubeApi(value)
+        videoInfo(value)
     }
 
     // useEffect(()=>{
-    //     youtubeApi('')
+    //     videoInfo('')
     // },[])
     console.log(youtubeData);
   return (
@@ -52,7 +53,7 @@ function Homepage() {
                         channelTitle={item.snippet.channelTitle}
                         description={item.snippet.description}
                         thumbnail={item.snippet.thumbnails.high.url}
-                        link={item.id.videoId}
+                        videoId={item.id.videoId}
                         publishedAt={item.snippet.publishedAt}
                         />
                     </div>

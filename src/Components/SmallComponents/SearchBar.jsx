@@ -8,11 +8,17 @@ function SearchBar({getData}) {
     const handleClick = () =>{
         getData(input)
     }
+    const handleEnterKey = (event) =>{
+        if(event.key === 'Enter'){
+            getData(input)
+        }
+    }
     return (
         <div>
             <div className="container input-group mb-3" style={{maxWidth:'600px'}}>
                 <input type="text" className="form-control" placeholder="Search on YouTube" aria-label="Recipient's username" aria-describedby="button-addon2"
                 onChange={handleInput}
+                onKeyDown={handleEnterKey}
                 />
                     <button className="btn btn-danger" type="button" id="button-addon2" onClick={handleClick}>Search</button>
             </div>
