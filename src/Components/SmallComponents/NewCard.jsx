@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
 function NewCard({ videoId }) {
-  const [date,setDate] = useState({
-    day:0,
-    month:'',
-    year:0
+  const [date, setDate] = useState({
+    day: 0,
+    month: '',
+    year: 0
   })
   const [items, setItems] = useState([
     {
@@ -12,7 +12,11 @@ function NewCard({ videoId }) {
       description: 'Undefined',
       customUrl: 'Undefined',
       publishedAt: 'Undefined',
-      thumbnails: '',
+      thumbnails: {
+        high:{
+          url:''
+        }
+      },
       viewCount: 0,
       subscriberCount: 0,
       videoCount: 0,
@@ -32,7 +36,11 @@ function NewCard({ videoId }) {
           description,
           customUrl,
           publishedAt,
-          thumbnails,
+          thumbnails:{
+            high:{
+              url:thumbnails.high.url,
+            }
+          },
           subscriberCount: statistics.subscriberCount,
           videoCount: statistics.videoCount,
           viewCount: statistics.viewCount,
@@ -56,37 +64,36 @@ function NewCard({ videoId }) {
   }
   const formatNumber = (number) => {
     if (isNaN(number)) {
-        return "Invalid number";
+      return "Invalid number";
     }
 
     if (number >= 1000000000) {
-        return (number / 1000000000).toFixed(2) + 'B';
+      return (number / 1000000000).toFixed(2) + 'B';
     } else if (number >= 1000000) {
-        return (number / 1000000).toFixed(2) + 'M';
+      return (number / 1000000).toFixed(2) + 'M';
     } else if (number >= 1000) {
-        return (number / 1000).toFixed(2) + 'K';
+      return (number / 1000).toFixed(2) + 'K';
     } else {
-        return number.toString();
+      return number.toString();
     }
-}
+  }
   useEffect(() => {
     channelInfo(videoId)
   }, [videoId])
-  // const {title = 'Not Found', description = 'Not Found'} = items[0].snippet
   return (
     <div>
       <div className="card" style={{ width: '18rem' }}>
-        <img src={`{}`} className="card-img-top" alt='' />
+        <img src={items[0].thumbnails.high.url} className="img-thumbnail" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">{items[0].title}</h5>
+          <h5 className="card-title"><a className="link-opacity-75-hover" href={`https://www.youtube.com/${items[0].customUrl}`} target='_blank'>{items[0].title}</a></h5>
           <h6 className="card-subtitle text-body-secondary">{items[0].customUrl} | {items[0].country}</h6>
           <p className="card-text">{`${items[0].description.slice(0, 200)}...`}</p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">{formatNumber(items[0].subscriberCount)} Subscribers</li>
-          <li className="list-group-item">Creation Date: {date.day}-{date.month}-{date.year}</li>
-          <li className="list-group-item">{formatNumber(items[0].videoCount)} Videos</li>
-          <li className="list-group-item">{formatNumber(items[0].viewCount)} Views</li>
+          <li className="list-group-item fw-bold">{formatNumber(items[0].subscriberCount)} Subscribers</li>
+          <li className="list-group-item fw-bold">Creation Date: {date.day}-{date.month}-{date.year}</li>
+          <li className="list-group-item fw-bold">{formatNumber(items[0].videoCount)} Videos</li>
+          <li className="list-group-item fw-bold">{formatNumber(items[0].viewCount)} Views</li>
         </ul>
       </div>
     </div>

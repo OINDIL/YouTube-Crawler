@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function SearchBar({getData}) {
-    const [input,setInput] = useState(null)
+    const [input,setInput] = useState('')
     const handleInput = (event) =>{
         setInput(event.target.value)
     }

@@ -44,7 +44,7 @@ function Homepage() {
             <SearchBar getData={getData}/>
         </div>
         {channelId != 0 ? 
-        <div className="container-fluid flex-wrap d-flex justify-content-center gap-3">
+        <div className="container-fluid flex-wrap d-flex justify-content-center gap-3 pb-4">
             {channelId.map((item,index)=>{
                 return(
                     <div key={index}>
