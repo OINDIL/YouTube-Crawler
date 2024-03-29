@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Empty() {
+function Empty({data}) {
     return (
         <div>
             <div className="container card position-relative" style={{width:'18rem'}}>
                     <div className="card-body">
-                        <p className="card-text">Search Something First...</p>
+                        <p className="card-text">{data}</p>
                     </div>
             </div>
         </div>

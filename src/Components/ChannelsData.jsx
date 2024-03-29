@@ -53,7 +53,7 @@ function Homepage() {
                 )
             })}
         </div>
-        : <Empty/>}
+        : <Empty data={'Search About Channels...'}/>}
     </div>
   )
 }
