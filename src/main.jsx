@@ -6,15 +6,16 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Navbar from './Components/SmallComponents/Navbar.jsx';
 
 const router = createBrowserRouter([
   {
     path:'/',
-    element: <ChannelData/>
+    element: <><Navbar/><ChannelData/></>
   },
   {
     path:'/videos',
-    element:<Videos/>
+    element:<><Navbar/><Videos/></>
   }
 ])
 ReactDOM.createRoot(document.getElementById('root')).render(
