@@ -30,7 +30,6 @@ function NewCard({ videoId }) {
       const obj = await data.json()
       const { title, description, customUrl, publishedAt, thumbnails, country } = obj.items[0].snippet
       const { statistics } = obj.items[0]
-      console.log(thumbnails.high.url);
       setItems([
         {
           title,

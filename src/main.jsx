@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Homepage from './Components/Homepage.jsx';
-import Videos from './Components/SmallComponents/Videos.jsx';
+import ChannelData from './Components/ChannelsData.jsx';
+import Videos from './Components/Videos.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,7 +10,7 @@ import {
 const router = createBrowserRouter([
   {
     path:'/',
-    element: <Homepage/>
+    element: <ChannelData/>
   },
   {
     path:'/videos',

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import SearchBar from './SmallComponents/SearchBar'
 import Empty from './SmallComponents/Empty'
 import LoadingBar from 'react-top-loading-bar'
-import NewCard from './SmallComponents/NewCard'
+import Channels from './SmallComponents/Channels'
 
 function Homepage() {
     //! states
@@ -35,7 +35,6 @@ function Homepage() {
     let channelId = youtubeData.map((item)=>{
         return item.snippet.channelId
     })
-    console.log(youtubeData);
   return (
     <div>
         {loader ? <LoadingBar color='#f11946'
@@ -49,7 +48,7 @@ function Homepage() {
             {channelId.map((item,index)=>{
                 return(
                     <div key={index}>
-                        <NewCard videoId={item}/>
+                        <Channels videoId={item}/>
                     </div>
                 )
             })}
