@@ -25,11 +25,12 @@ function NewCard({ videoId }) {
   ])
   const channelInfo = async (id) => {
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&maxResults=3&id=${id}&type=channel&key=AIzaSyBJQP4LAiQBUA5q_Y_plVQg6hn2dIQFdFg`
+      const URL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&maxResults=3&id=${id}&type=channel&key=${import.meta.env.VITE_API_KEY}`
       const data = await fetch(URL)
       const obj = await data.json()
       const { title, description, customUrl, publishedAt, thumbnails, country } = obj.items[0].snippet
       const { statistics } = obj.items[0]
+      console.log(thumbnails.high.url);
       setItems([
         {
           title,
@@ -85,7 +86,7 @@ function NewCard({ videoId }) {
       <div className="card" style={{ width: '18rem' }}>
         <img src={items[0].thumbnails.high.url} className="img-thumbnail" alt="..." />
         <div className="card-body">
-          <h5 className="card-title"><a className="link-opacity-75-hover" href={`https://www.youtube.com/${items[0].customUrl}`} target='_blank'>{items[0].title}</a></h5>
+          <h5 className="card-title">{items[0].customUrl ? <a className="link-opacity-75-hover" href={`https://www.youtube.com/${items[0].customUrl}`} target='_blank'>{items[0].title}</a> : items[0].title}</h5>
           <h6 className="card-subtitle text-body-secondary">{items[0].customUrl} | {items[0].country}</h6>
           <p className="card-text">{`${items[0].description.slice(0, 200)}...`}</p>
         </div>
