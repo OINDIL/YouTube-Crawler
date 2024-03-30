@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SearchBar from './SmallComponents/SearchBar'
 import LoadingBar from 'react-top-loading-bar'
 import Empty from './SmallComponents/Empty'
+import VideosCard from './SmallComponents/VideosCard'
 const Videos = () => {
     //! States
     const [youtubeData, setYoutubeData] = useState([])
@@ -46,7 +47,7 @@ const Videos = () => {
             {videoId.map((item,index)=>{
                 return(
                     <div key={index}>
-                        {item}
+                        <VideosCard data={item}/>
                     </div>
                 )
             })}

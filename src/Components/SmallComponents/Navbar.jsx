@@ -9,7 +9,7 @@ const Navbar = () => {
     }
     return (
         <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <Link className='navbar-brand' to="/" onClick={()=>handleActive('channles')}>Biswas Crawler</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
