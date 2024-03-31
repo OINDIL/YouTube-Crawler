@@ -12,7 +12,7 @@ const Videos = () => {
     const videoInfo = async (query) => {
         setLoader(true)
         try {
-            const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=${query}&type=video&key=${import.meta.env.VITE_API_KEY}`
+            const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=${import.meta.env.VITE_API_KEY}`
             setProgress(25)
             const data = await fetch(URL)
             const obj = await data.json()

@@ -87,13 +87,13 @@ function NewCard({ videoId }) {
         <div className="card-body">
           <h5 className="card-title">{items[0].customUrl ? <a className="link-opacity-75-hover" href={`https://www.youtube.com/${items[0].customUrl}`} target='_blank'>{items[0].title}</a> : items[0].title}</h5>
           <h6 className="card-subtitle text-body-secondary">{items[0].customUrl} | {items[0].country}</h6>
-          <p className="card-text">{`${items[0].description.slice(0, 200)}...`}</p>
+          <p className="card-text">{`${(items[0].description).slice(0,200)}...`}</p>
         </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item fw-bold">{formatNumber(items[0].subscriberCount)} Subscribers</li>
-          <li className="list-group-item fw-bold">Creation Date: {date.day}-{date.month}-{date.year}</li>
-          <li className="list-group-item fw-bold">{formatNumber(items[0].videoCount)} Videos</li>
-          <li className="list-group-item fw-bold">{formatNumber(items[0].viewCount)} Views</li>
+        <ul className="list-group list-group-flush fw-bold">
+          <li className="list-group-item">{formatNumber(items[0].subscriberCount)} Subscribers</li>
+          <li className="list-group-item">Creation Date: {date.day}-{date.month}-{date.year}</li>
+          <li className="list-group-item">{formatNumber(items[0].videoCount)} Videos</li>
+          <li className="list-group-item">{formatNumber(items[0].viewCount)} Views</li>
         </ul>
       </div>
     </div>
