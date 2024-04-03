@@ -11,12 +11,30 @@ const VideosCard = ({ data }) => {
       year:0,
       channelTitle:'Undefined',
       tags:[],
-      defaultAudioLanguage:'No Data'
+      defaultAudioLanguage:'No Data',
+      likeCount:0,
+      commentCount:0,
+      viewCount:0
     }
   ])
+  const formatNumber = (number) => {
+    if (isNaN(number)) {
+      return "Invalid number";
+    }
+
+    if (number >= 1000000000) {
+      return (number / 1000000000).toFixed(2) + 'B';
+    } else if (number >= 1000000) {
+      return (number / 1000000).toFixed(2) + 'M';
+    } else if (number >= 1000) {
+      return (number / 1000).toFixed(2) + 'K';
+    } else {
+      return number.toString();
+    }
+  }
   const channelInfo = async (id) => {
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet&key=${import.meta.env.VITE_API_KEY}`
+      const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${import.meta.env.VITE_API_KEY}`
       const data = await fetch(URL, {
         method: 'GET',
         mode: 'cors',
@@ -28,7 +46,9 @@ const VideosCard = ({ data }) => {
   }
   useEffect(() => {
     channelInfo(data).then((data) => {
-      const {title,description,publishedAt,thumbnails:{high:{url}},channelTitle,tags = ["No Tags Used..."],defaultAudioLanguage} = data.items[0].snippet
+      // console.log(data);
+      const {title,description,publishedAt,thumbnails:{high:{url}},channelTitle,tags = ["No Tags Used..."],defaultAudioLanguage = 'No audio mentioned'} = data.items[0].snippet
+      const {likeCount,viewCount,commentCount} = data.items[0].statistics 
       const date = new Date(publishedAt)
       let year = date.getFullYear();
       let month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
@@ -43,7 +63,10 @@ const VideosCard = ({ data }) => {
           year,
           channelTitle,
           tags,
-          defaultAudioLanguage
+          defaultAudioLanguage,
+          likeCount,
+          viewCount,
+          commentCount
         }
       ]);
     })
@@ -58,6 +81,9 @@ const VideosCard = ({ data }) => {
           <p className="card-text">{`${(video[0].description).slice(0,200)}...`}</p>
         </div>
         <ul className="list-group list-group-flush">
+        <li className="list-group-item"><span className='fw-bold'>Likes: </span>{formatNumber(video[0].likeCount)}</li>
+        <li className="list-group-item"><span className="fw-bold">Comments: </span>{formatNumber(video[0].commentCount)}</li>
+        <li className="list-group-item"><span className="fw-bold">Views: </span>{formatNumber(video[0].viewCount)}</li>
           <li className="list-group-item"><span className='fw-bold'>Tags Used:</span>: {video[0].tags.map((tag)=>{
             return ` #${tag}`
           })}
@@ -65,9 +91,8 @@ const VideosCard = ({ data }) => {
           <li className="list-group-item fw-bold">Upload Date: {video[0].day}-{video[0].month}-{video[0].year}</li>
           <li className="list-group-item fw-bold">Audio Language: {video[0].defaultAudioLanguage}</li>
         </ul>
-        <div className="card-body">
-          <a href="#" className="card-link">Card link</a>
-          <a href="#" className="card-link">Another link</a>
+        <div className="card-body text-center">
+          <a href={`https://www.youtube.com/watch?v=${data}`} className="card-link text-decoration-none" target='_blank'>Watch video</a>
         </div>
       </div>
     </div>
