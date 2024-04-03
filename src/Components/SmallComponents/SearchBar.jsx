@@ -16,7 +16,7 @@ function SearchBar({getData}) {
     return (
         <div>
             <div className="container input-group mb-4" style={{maxWidth:'600px',marginTop:'4rem'}}>
-                <input type="text" className="form-control" placeholder="Search on YouTube" aria-label="Recipient's username" aria-describedby="button-addon2"
+                <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2"
                 onChange={handleInput}
                 onKeyDown={handleEnterKey}
                 />

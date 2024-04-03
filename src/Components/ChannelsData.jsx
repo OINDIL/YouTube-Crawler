@@ -3,6 +3,7 @@ import SearchBar from './SmallComponents/SearchBar'
 import Empty from './SmallComponents/Empty'
 import LoadingBar from 'react-top-loading-bar'
 import Channels from './SmallComponents/Channels'
+import ResultLength from './SmallComponents/ResultLength'
 
 function Homepage() {
     //! states
@@ -44,6 +45,8 @@ function Homepage() {
             <SearchBar getData={getData}/>
         </div>
         {channelId != 0 ? 
+        <div>
+        <ResultLength result={channelId.length}/>
         <div className="container-fluid flex-wrap d-flex justify-content-center gap-3 pb-4">
             {channelId.map((item,index)=>{
                 return(
@@ -52,6 +55,7 @@ function Homepage() {
                     </div>
                 )
             })}
+        </div>
         </div>
         : <Empty data={'Search About Channels...'}/>}
     </div>
