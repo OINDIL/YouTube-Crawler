@@ -84,7 +84,7 @@ function NewCard({ videoId }) {
   }, [videoId]);
   return (
     <div>
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card shadow" style={{ width: "18rem" }}>
         <img
           src={items[0].url}
           className="img-thumbnail"

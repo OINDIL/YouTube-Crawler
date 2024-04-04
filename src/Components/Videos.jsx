@@ -13,7 +13,7 @@ const Videos = () => {
   const videoInfo = async (query) => {
     setLoader(true);
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&type=video&key=${
+      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query}&type=video&key=${
         import.meta.env.VITE_API_KEY
       }`;
       setProgress(25);
@@ -62,7 +62,7 @@ const Videos = () => {
           </div>
         </div>
       ) : (
-        <Empty data={"Search About Videos..."} />
+        <Empty data={"Search To View Video Stats"} />
       )}
     </div>
   );

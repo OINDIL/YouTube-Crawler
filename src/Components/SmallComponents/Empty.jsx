@@ -3,9 +3,9 @@ import React from 'react'
 function Empty({data}) {
     return (
         <div>
-            <div className="container card position-relative" style={{width:'18rem'}}>
+            <div className="container card position-relative shadow" style={{width:'18rem'}}>
                     <div className="card-body">
-                        <p className="card-text">{data}</p>
+                        <p className="card-text fw-bold">{data}</p>
                     </div>
             </div>
         </div>

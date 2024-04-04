@@ -18,10 +18,10 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className={`nav-link ${active === 'channels' ? `active` : null}`} aria-current="page" onClick={()=>handleActive('channels')} to="/">Channels</Link>
+                                <Link className={`nav-link ${active === 'channels' ? `fw-bold` : null}`} aria-current="page" onClick={()=>handleActive('channels')} to="/">Channels</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${active === 'videos' ? `active` : null}`} onClick={()=>handleActive('videos')} to="/videos">Videos</Link>
+                                <Link className={`nav-link ${active === 'videos' ? `fw-bold` : null}`} onClick={()=>handleActive('videos')} to="/videos">Videos</Link>
                             </li>
                         </ul>
                     </div>

@@ -74,7 +74,7 @@ const VideosCard = ({ data }) => {
   }, [data])
   return (
     <div>
-      <div className="card" style={{width:'18rem'}}>
+      <div className="card shadow" style={{width:'18rem'}}>
         <img src={video[0].url} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{`${(video[0].title).slice(0,100)}...`}</h5>
