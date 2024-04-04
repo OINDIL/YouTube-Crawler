@@ -7,7 +7,7 @@ function ErrorMessage({title, message, buttonMessage, setErrorLoader}) {
                     <div className="card-body text-center shadow">
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{message}</p>
-                        <button className="btn btn-success" onClick={()=>setErrorLoader(false)}>{buttonMessage}</button>
+                        <button className="btn btn-outline-success" onClick={()=>setErrorLoader(false)}>{buttonMessage}</button>
                     </div>
             </div>
         </div>

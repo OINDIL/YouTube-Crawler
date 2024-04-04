@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ErrorMessage from './ErrorMessage'
 
-function SearchBar({ getData }) {
+function SearchBar({ getData, componentError }) {
     const [input, setInput] = useState('')
     const [ErrorLoader, setErrorLoader] = useState(false)
     const handleInput = (event) => {
@@ -29,7 +29,7 @@ function SearchBar({ getData }) {
                 {ErrorLoader ? <ErrorMessage title={'Empty Input Field'} message={'Enter Some Keywords to Search'} buttonMessage={'Search Again'} setErrorLoader={setErrorLoader} /> : null}
             </div>
             <div className="container input-group mb-4" style={{ maxWidth: '600px', marginTop: '4rem' }}>
-                {ErrorLoader ? <>
+                {ErrorLoader || componentError ? <>
                     <input type="text" className="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2"
                         disabled
                     />
