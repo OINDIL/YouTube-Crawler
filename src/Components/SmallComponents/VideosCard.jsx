@@ -5,7 +5,7 @@ const VideosCard = ({ data }) => {
     {
       title:'Undefined',
       description:'Undefined',
-      url:'',
+      url:'https://placehold.co/600x400',
       day:0,
       month:0,
       year:0,
@@ -47,12 +47,13 @@ const VideosCard = ({ data }) => {
   useEffect(() => {
     channelInfo(data).then((data) => {
       // console.log(data);
-      const {title,description,publishedAt,thumbnails:{high:{url}},channelTitle,tags = ["No Tags Used..."],defaultAudioLanguage = 'No audio mentioned'} = data.items[0].snippet
+      const {title,description,publishedAt,thumbnails:{high:{url}},channelTitle,tags = ["No Tags"],defaultAudioLanguage = 'No audio mentioned'} = data.items[0].snippet
       const {likeCount,viewCount,commentCount} = data.items[0].statistics 
       const date = new Date(publishedAt)
       let year = date.getFullYear();
       let month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
       let day = ("0" + date.getDate()).slice(-2);
+      console.log();
       setVideo([
         {
           title,
@@ -84,7 +85,7 @@ const VideosCard = ({ data }) => {
         <li className="list-group-item"><span className='fw-bold'>Likes: </span>{formatNumber(video[0].likeCount)}</li>
         <li className="list-group-item"><span className="fw-bold">Comments: </span>{formatNumber(video[0].commentCount)}</li>
         <li className="list-group-item"><span className="fw-bold">Views: </span>{formatNumber(video[0].viewCount)}</li>
-          <li className="list-group-item"><span className='fw-bold'>Tags Used:</span>: {video[0].tags.map((tag)=>{
+          <li className="list-group-item"><span className='fw-bold'>Tags Used:</span> {video[0].tags.map((tag)=>{
             return ` #${tag}`
           })}
           </li>
