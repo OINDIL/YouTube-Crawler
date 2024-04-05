@@ -6,8 +6,11 @@ import Channels from "./SmallComponents/Channels";
 import ResultLength from "./SmallComponents/ResultLength";
 import DropDown from "./SmallComponents/DropDown";
 import ErrorMessage from "./SmallComponents/ErrorMessage";
+import { useValueFormatter } from "./Context/FormatValue";
 
 function Homepage() {
+  //? Context API
+  const {hover,setHover} = useValueFormatter()
   //! states
   const [youtubeData, setYoutubeData] = useState([]);
   const [totalResults,setTotalResults] = useState(0)
@@ -80,7 +83,7 @@ function Homepage() {
             {channelId.map((item, index) => {
               return (
                 <div key={index}>
-                  <Channels videoId={item} />
+                  <Channels videoId={item} index={index}/>
                 </div>
               );
             })}

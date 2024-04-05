@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {useValueFormatter} from '../Context/FormatValue'
 
-const VideosCard = ({ data }) => {
-  const {formatNumber} = useValueFormatter();
+const VideosCard = ({ data,index }) => {
+  const {formatNumber,hover,setHover} = useValueFormatter();
   const [video, setVideo] = useState([
     {
       title:'Undefined',
@@ -59,7 +59,10 @@ const VideosCard = ({ data }) => {
   }, [data])
   return (
     <div>
-      <div className="card shadow" style={{width:'18rem'}}>
+      <div className={`card ${hover === index ? `shadow-lg` : null}`} style={{width:'18rem'}}
+      onMouseEnter={()=>setHover(index)}
+      onMouseLeave={()=>setHover(null)}
+      >
         <img src={video[0].url} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{`${(video[0].title).slice(0,100)}...`}</h5>

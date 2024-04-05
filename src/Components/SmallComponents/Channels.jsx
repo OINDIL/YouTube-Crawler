@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {useValueFormatter} from '../Context/FormatValue'
 
-function NewCard({ videoId }) {
-  const { formatNumber } = useValueFormatter();
+function NewCard({ videoId,index}) {
+  const { formatNumber,hover,setHover } = useValueFormatter();
   const [date, setDate] = useState({
     day: 0,
     month: "",
@@ -69,7 +69,9 @@ function NewCard({ videoId }) {
   }, [videoId]);
   return (
     <div>
-      <div className="card shadow" style={{ width: "18rem" }}>
+      <div className={`card ${hover === index ? `shadow-lg` : null}`} style={{ width: "15rem" }} onMouseEnter={()=>setHover(index)}
+      onMouseLeave={()=>setHover(null)}
+      >
         <img
           src={items[0].url}
           className="img-thumbnail"

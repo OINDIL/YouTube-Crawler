@@ -80,7 +80,7 @@ const Videos = () => {
             {videoId.map((item, index) => {
               return (
                 <div key={index}>
-                  <VideosCard data={item} />
+                  <VideosCard data={item} index={index}/>
                 </div>
               );
             })}
