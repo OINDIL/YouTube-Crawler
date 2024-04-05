@@ -68,7 +68,6 @@ function NewCard({ videoId }) {
     if (isNaN(number)) {
       return "Invalid number";
     }
-
     if (number >= 1000000000) {
       return (number / 1000000000).toFixed(2) + "B";
     } else if (number >= 1000000) {
