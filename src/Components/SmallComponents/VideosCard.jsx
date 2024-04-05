@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import {useValueFormatter} from '../Context/FormatValue'
 
 const VideosCard = ({ data }) => {
+  const {formatNumber} = useValueFormatter();
   const [video, setVideo] = useState([
     {
       title:'Undefined',
@@ -17,21 +19,6 @@ const VideosCard = ({ data }) => {
       viewCount:0
     }
   ])
-  const formatNumber = (number) => {
-    if (isNaN(number)) {
-      return "Invalid number";
-    }
-
-    if (number >= 1000000000) {
-      return (number / 1000000000).toFixed(2) + 'B';
-    } else if (number >= 1000000) {
-      return (number / 1000000).toFixed(2) + 'M';
-    } else if (number >= 1000) {
-      return (number / 1000).toFixed(2) + 'K';
-    } else {
-      return number.toString();
-    }
-  }
   const channelInfo = async (id) => {
     try {
       const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${import.meta.env.VITE_API_KEY}`

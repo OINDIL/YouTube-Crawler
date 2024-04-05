@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import {useValueFormatter} from '../Context/FormatValue'
 
 function NewCard({ videoId }) {
+  const { formatNumber } = useValueFormatter();
   const [date, setDate] = useState({
     day: 0,
     month: "",
@@ -53,8 +55,6 @@ function NewCard({ videoId }) {
       let year = date.getFullYear();
       let month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
       let day = ("0" + date.getDate()).slice(-2);
-      // let hours = ("0" + date.getHours()).slice(-2);
-      // let minutes = ("0" + date.getMinutes()).slice(-2);
       setDate({
         day,
         month,
@@ -62,20 +62,6 @@ function NewCard({ videoId }) {
       });
     } catch (error) {
       console.error(error);
-    }
-  };
-  const formatNumber = (number) => {
-    if (isNaN(number)) {
-      return "Invalid number";
-    }
-    if (number >= 1000000000) {
-      return (number / 1000000000).toFixed(2) + "B";
-    } else if (number >= 1000000) {
-      return (number / 1000000).toFixed(2) + "M";
-    } else if (number >= 1000) {
-      return (number / 1000).toFixed(2) + "K";
-    } else {
-      return number.toString();
     }
   };
   useEffect(() => {
