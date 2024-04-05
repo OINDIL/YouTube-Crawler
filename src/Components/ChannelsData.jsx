@@ -10,6 +10,7 @@ import ErrorMessage from "./SmallComponents/ErrorMessage";
 function Homepage() {
   //! states
   const [youtubeData, setYoutubeData] = useState([]);
+  const [totalResults,setTotalResults] = useState(0)
   const [loader, setLoader] = useState(false);
   const [progress, setProgress] = useState(0);
   const [maxResults, setMaxResults] = useState(10);
@@ -30,9 +31,10 @@ function Homepage() {
       }
       const obj = await data.json();
       setProgress(50);
-      const { items } = obj;
+      const { items, pageInfo:{totalResults} } = obj;
       setProgress(90);
       setYoutubeData(items);
+      setTotalResults(totalResults)
       setProgress(100);
     } catch (err) {
       alert(err);
@@ -73,7 +75,7 @@ function Homepage() {
       </div>
       {channelId != 0 ? (
         <div>
-          <ResultLength result={channelId.length} />
+          <ResultLength result={channelId.length} totalResults={totalResults}/>
           <div className="container-fluid flex-wrap d-flex justify-content-center gap-3 pb-4">
             {channelId.map((item, index) => {
               return (

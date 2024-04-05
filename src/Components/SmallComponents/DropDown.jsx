@@ -11,6 +11,7 @@ function DropDown({maxResults, setMaxResults}) {
                     Max Results: {maxResults}
                 </button>
                 <ul className="dropdown-menu text-center" style={{cursor:'pointer'}}>
+                    <li><a className="dropdown-item" onClick={()=>handleMaxResults(5)}>5</a></li>
                     <li><a className="dropdown-item" onClick={()=>handleMaxResults(15)}>15</a></li>
                     <li><a className="dropdown-item" onClick={()=>handleMaxResults(25)}>25</a></li>
                     <li><a className="dropdown-item" onClick={()=>handleMaxResults(35)}>35</a></li>

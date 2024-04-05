@@ -46,14 +46,12 @@ const VideosCard = ({ data }) => {
   }
   useEffect(() => {
     channelInfo(data).then((data) => {
-      // console.log(data);
       const {title,description,publishedAt,thumbnails:{high:{url}},channelTitle,tags = ["No Tags"],defaultAudioLanguage = 'No audio mentioned'} = data.items[0].snippet
       const {likeCount,viewCount,commentCount} = data.items[0].statistics 
       const date = new Date(publishedAt)
       let year = date.getFullYear();
       let month = ("0" + (date.getMonth() + 1)).slice(-2); // Adding 1 because months are zero-based
       let day = ("0" + date.getDate()).slice(-2);
-      console.log();
       setVideo([
         {
           title,
