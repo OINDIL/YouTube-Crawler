@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DropDown({maxResults, setMaxResults}) {
+function MaxResultsFilter({maxResults, setMaxResults}) {
     const handleMaxResults = (num) =>{
         setMaxResults(num)
     }
@@ -22,4 +22,4 @@ function DropDown({maxResults, setMaxResults}) {
     )
 }
 
-export default DropDown 
+export default MaxResultsFilter 

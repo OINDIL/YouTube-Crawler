@@ -4,13 +4,10 @@ import Empty from "./SmallComponents/Empty";
 import LoadingBar from "react-top-loading-bar";
 import Channels from "./SmallComponents/Channels";
 import ResultLength from "./SmallComponents/ResultLength";
-import DropDown from "./SmallComponents/DropDown";
+import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import ErrorMessage from "./SmallComponents/ErrorMessage";
-import { useValueFormatter } from "./Context/FormatValue";
 
 function Homepage() {
-  //? Context API
-  const {hover,setHover} = useValueFormatter()
   //! states
   const [youtubeData, setYoutubeData] = useState([]);
   const [totalResults,setTotalResults] = useState(0)
@@ -74,7 +71,7 @@ function Homepage() {
         <SearchBar getData={getData} componentError={ErrorLoader}/>
       </div>
       <div className="container d-flex justify-content-center mb-3">
-        <DropDown maxResults={maxResults} setMaxResults={setMaxResults} />
+        <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults} />
       </div>
       {channelId != 0 ? (
         <div>

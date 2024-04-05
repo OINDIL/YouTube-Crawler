@@ -4,9 +4,8 @@ import LoadingBar from "react-top-loading-bar";
 import Empty from "./SmallComponents/Empty";
 import VideosCard from "./SmallComponents/VideosCard";
 import ResultLength from "./SmallComponents/ResultLength"
-import DropDown from "./SmallComponents/DropDown";
 import ErrorMessage from "./SmallComponents/ErrorMessage";
-
+import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 
 const Videos = () => {
   //! States
@@ -71,7 +70,7 @@ const Videos = () => {
         <SearchBar getData={getData} componentError={ErrorLoader}/>
       </div>
       <div className="container d-flex justify-content-center mb-3">
-        <DropDown maxResults={maxResults} setMaxResults={setMaxResults}/>
+        <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults}/>
       </div>
       {videoId != 0 ? (
         <div>
@@ -89,6 +88,7 @@ const Videos = () => {
       ) : (
         <Empty data={"Search To View Video Stats"} />
       )}
+      {/* <ReactPaginate /> */}
     </div>
   );
 };
