@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {useValueFormatter} from '../Context/AllContextAPI'
+import {useAllContext} from '../Context/AllContextAPI'
 
 const VideosCard = ({ data,index }) => {
-  const {formatNumber,hover,setHover} = useValueFormatter();
+  const {formatNumber,hover,setHover} = useAllContext();
   const [video, setVideo] = useState([
     {
       title:'Undefined',

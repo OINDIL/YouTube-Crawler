@@ -7,7 +7,7 @@ function MaxResultsFilter({maxResults, setMaxResults}) {
     return (
         <div>
             <div className="dropdown">
-                <button className="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Max Results: {maxResults}
                 </button>
                 <ul className="dropdown-menu text-center" style={{cursor:'pointer'}}>

@@ -1,10 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 const ValueFormatterContext = createContext();
-export const useValueFormatter = () => useContext(ValueFormatterContext);
+export const useAllContext = () => useContext(ValueFormatterContext);
 export const ValueFormatterProvider = ({ children }) => {
   //* hover shadow state
   const [hover,setHover] = useState(null)
-  
+
+  //? Channel filter search
+  const [countryCode, setCountryCode] = useState('')
+
   const formatNumber = (number) => {
     if (isNaN(number)) {
       return "Invalid number";
@@ -21,7 +24,7 @@ export const ValueFormatterProvider = ({ children }) => {
   };
 
   return (
-    <ValueFormatterContext.Provider value={{ formatNumber,hover,setHover }}>
+    <ValueFormatterContext.Provider value={{ formatNumber,hover,setHover,countryCode,setCountryCode }}>
       {children}
     </ValueFormatterContext.Provider>
   );

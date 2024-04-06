@@ -1,8 +1,8 @@
 import React from "react";
-import {useValueFormatter} from '../Context/AllContextAPI'
+import {useAllContext} from '../Context/AllContextAPI'
 
 function ResultLength({result, totalResults}) {
-  const {formatNumber} = useValueFormatter()
+  const {formatNumber} = useAllContext()
   return (
     <div>
       <div className="container card rounded-5 mb-3 text-center" style={{maxWidth:'300px'}}>

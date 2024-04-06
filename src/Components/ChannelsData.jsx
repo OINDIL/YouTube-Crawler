@@ -16,11 +16,11 @@ function Homepage() {
   const [progress, setProgress] = useState(0);
   const [maxResults, setMaxResults] = useState(10);
   const [ErrorLoader, setErrorLoader] = useState(false);
-
+  
   const videoInfo = async (query) => {
     setLoader(true);
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=video&key=${
+      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=channel&key=${
         import.meta.env.VITE_API_KEY
       }`;
       setProgress(25);

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {useValueFormatter} from '../Context/AllContextAPI'
+import {useAllContext} from '../Context/AllContextAPI'
 
 function NewCard({ videoId,index}) {
-  const { formatNumber,hover,setHover } = useValueFormatter();
+  const { formatNumber,hover,setHover } = useAllContext();
   const [date, setDate] = useState({
     day: 0,
     month: "",
