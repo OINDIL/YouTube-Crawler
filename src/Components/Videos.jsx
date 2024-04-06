@@ -7,8 +7,11 @@ import ResultLength from "./SmallComponents/ResultLength"
 import ErrorMessage from "./SmallComponents/ErrorMessage";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
+import { useAllContext } from "./Context/AllContextAPI";
 
 const Videos = () => {
+    //? Context API
+    const {countryCode} = useAllContext()
   //! States
   const [youtubeData, setYoutubeData] = useState([]);
   const [totalResults,setTotalResults] = useState(0)
@@ -21,7 +24,7 @@ const Videos = () => {
   const videoInfo = async (query) => {
     setLoader(true);
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=video&key=${import.meta.env.VITE_API_KEY}`;
+      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=video&regionCode=${countryCode}&key=${import.meta.env.VITE_API_KEY}`;
       setProgress(25);
       const data = await fetch(URL);
       if (data.status != 200) {
@@ -70,7 +73,7 @@ const Videos = () => {
       <div className="container mt-3">
         <SearchBar getData={getData} componentError={ErrorLoader}/>
       </div>
-      <div className="container d-flex justify-content-center mb-3">
+      <div className="container d-flex justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults}/>
         <CountryFilter/>
       </div>

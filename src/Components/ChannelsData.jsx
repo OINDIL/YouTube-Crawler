@@ -7,8 +7,12 @@ import ResultLength from "./SmallComponents/ResultLength";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import ErrorMessage from "./SmallComponents/ErrorMessage";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
+import { useAllContext } from "./Context/AllContextAPI";
 
 function Homepage() {
+  //? Context API
+  const {countryCode} = useAllContext()
+
   //! states
   const [youtubeData, setYoutubeData] = useState([]);
   const [totalResults,setTotalResults] = useState(0)
@@ -20,7 +24,7 @@ function Homepage() {
   const videoInfo = async (query) => {
     setLoader(true);
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=channel&key=${
+      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=channel&regionCode=${countryCode}&key=${
         import.meta.env.VITE_API_KEY
       }`;
       setProgress(25);
