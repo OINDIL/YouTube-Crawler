@@ -66,6 +66,10 @@ function NewCard({ videoId,index}) {
   };
   useEffect(() => {
     channelInfo(videoId);
+
+    return ()=>{
+      channelInfo(videoId)
+    }
   }, [videoId]);
   return (
     <div>

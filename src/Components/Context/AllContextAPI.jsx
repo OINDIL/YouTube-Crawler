@@ -8,6 +8,9 @@ export const ValueFormatterProvider = ({ children }) => {
   //? Channel filter search
   const [countryCode, setCountryCode] = useState('IN')
 
+  //? Category filter search
+  const [catergoryCode, setCatergoryCode] = useState(1)
+
   const formatNumber = (number) => {
     if (isNaN(number)) {
       return "Invalid number";
@@ -24,7 +27,7 @@ export const ValueFormatterProvider = ({ children }) => {
   };
 
   return (
-    <AllContext.Provider value={{ formatNumber,hover,setHover,countryCode,setCountryCode }}>
+    <AllContext.Provider value={{ formatNumber,hover,setHover,countryCode,setCountryCode,catergoryCode, setCatergoryCode }}>
       {children}
     </AllContext.Provider>
   );

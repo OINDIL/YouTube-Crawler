@@ -8,10 +8,11 @@ import ErrorMessage from "./SmallComponents/ErrorMessage";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 import { useAllContext } from "./Context/AllContextAPI";
+import CategoryFilter from "./SmallComponents/Filters/CategoryFilter";
 
 const Videos = () => {
     //? Context API
-    const {countryCode} = useAllContext()
+    const {countryCode,categoryCode} = useAllContext()
   //! States
   const [youtubeData, setYoutubeData] = useState([]);
   const [totalResults,setTotalResults] = useState(0)
@@ -76,6 +77,7 @@ const Videos = () => {
       <div className="container d-flex justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults}/>
         <CountryFilter/>
+        <CategoryFilter/>
       </div>
       {videoId != 0 ? (
         <div>
