@@ -285,7 +285,7 @@ function CountryFilter() {
                     <div className="input-group mb-3">
                         <input
                             type="text"
-                            className="form-control border border-primary"
+                            className="form-control border"
                             placeholder="Search"
                             aria-label="Recipient's username"
                             aria-describedby="button-addon2"

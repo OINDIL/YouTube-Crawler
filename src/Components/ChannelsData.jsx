@@ -29,8 +29,10 @@ function Homepage() {
       }`;
       setProgress(25);
       const data = await fetch(URL);
+      console.log(data);
       if (data.status != 200) {
         setErrorLoader(true);
+        data.statusText = 'Check the api'
         setProgress(100);
         return;
       }
