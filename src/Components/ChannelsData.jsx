@@ -6,6 +6,7 @@ import Channels from "./SmallComponents/Channels";
 import ResultLength from "./SmallComponents/ResultLength";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import ErrorMessage from "./SmallComponents/ErrorMessage";
+import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 
 function Homepage() {
   //! states
@@ -70,8 +71,9 @@ function Homepage() {
       <div className="container mt-3">
         <SearchBar getData={getData} componentError={ErrorLoader}/>
       </div>
-      <div className="container d-flex justify-content-center mb-3">
+      <div className="container d-flex justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults} />
+        <CountryFilter/>
       </div>
       {channelId != 0 ? (
         <div>

@@ -6,6 +6,7 @@ import VideosCard from "./SmallComponents/VideosCard";
 import ResultLength from "./SmallComponents/ResultLength"
 import ErrorMessage from "./SmallComponents/ErrorMessage";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
+import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 
 const Videos = () => {
   //! States
@@ -71,6 +72,7 @@ const Videos = () => {
       </div>
       <div className="container d-flex justify-content-center mb-3">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults}/>
+        <CountryFilter/>
       </div>
       {videoId != 0 ? (
         <div>
