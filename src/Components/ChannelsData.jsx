@@ -21,7 +21,8 @@ function Homepage() {
   const [progress, setProgress] = useState(0);
   const [maxResults, setMaxResults] = useState(10);
   const [ErrorLoader, setErrorLoader] = useState(false);
-  
+  const [paginationToken, setPaginationToken] = useState('')
+
   const videoInfo = async (query) => {
     setLoader(true);
     try {
@@ -33,18 +34,19 @@ function Homepage() {
       if (data.status != 200) {
         setErrorLoader(true);
         setProgress(100);
-        return;
+        throw new Error('API NOT RESPONDING!')
       }
       const obj = await data.json();
       setProgress(50);
       const { items, pageInfo:{totalResults},nextPageToken } = obj;
+      nextPageToken ? setPaginationToken(nextPageToken) : setPaginationToken('')
       setProgress(90);
       setYoutubeData(items);
       setTotalResults(totalResults)
       setProgress(100);
-    } catch (err) {
-      alert(err);
-      setProgress(100);
+    } catch (err){
+      console.error(err)
+      setProgress(100)
     }
   };
   //! Getting data from search bar
@@ -80,7 +82,7 @@ function Homepage() {
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults} />
         <CountryFilter/>
       </div>
-      {channelId != 0 ? (
+      {channelId.length != 0 ? (
         <div>
           <ResultLength result={channelId.length} totalResults={totalResults}/>
           <div className="container-fluid flex-wrap d-flex justify-content-center gap-3 pb-4">
@@ -96,7 +98,9 @@ function Homepage() {
       ) : (
         <Empty data={"Search To See Channel stats"} />
       )}
-      {channelId != 0 ? <Pagination/> : null}
+      <div className="container">
+      {channelId != 0 ? <Pagination paginationToken={paginationToken} recordsPerPage={maxResults} totalResults={totalResults} data={channelId}/> : null}
+      </div>
     </div>
   );
 }

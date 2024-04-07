@@ -31,7 +31,7 @@ const Videos = () => {
       if (data.status != 200) {
         setErrorLoader(true)
         setProgress(100)
-        return;
+        throw new Error('API NOT RESPONDING!')
       }
       const obj = await data.json();
       setProgress(50);
@@ -41,7 +41,7 @@ const Videos = () => {
       setTotalResults(totalResults)
       setProgress(100);
     } catch (err) {
-      alert(err);
+      console.error(err)
       setProgress(100);
     }
   };
