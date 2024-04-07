@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAllContext } from '../Context/AllContextAPI'
 
 const Navbar = () => {
-    const [active, setActive] = useState('channels')
-
-    const handleActive = (link) =>{
-        setActive(link)
-    }
+    const {active,handleActive} = useAllContext()
     return (
         <div>
             <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
@@ -22,6 +19,14 @@ const Navbar = () => {
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${active === 'videos' ? `fw-bold` : null}`} onClick={()=>handleActive('videos')} to="/videos">Videos</Link>
+                            </li>
+                            <li>
+                                <Link className={`nav-link ${active === 'signin' ? `fw-bold` : null}`} to="/signin"
+                                onClick={()=>handleActive('signin')}>Login</Link>
+                            </li>
+                            <li>
+                                <Link className={`nav-link ${active === 'signup' ? `fw-bold` : null}`} to="/signup"
+                                onClick={()=>handleActive('signup')}>Sign Up</Link>
                             </li>
                         </ul>
                     </div>

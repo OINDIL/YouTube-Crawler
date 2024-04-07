@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useAllContext} from '../Context/AllContextAPI'
 
 function NewCard({ videoId,index}) {
-  const { formatNumber,hover,setHover } = useAllContext();
+  const { formatNumber,hover,setHover,apiKey } = useAllContext();
   const [date, setDate] = useState({
     day: 0,
     month: "",
@@ -24,7 +24,7 @@ function NewCard({ videoId,index}) {
   const channelInfo = async (id) => {
     try {
       const URL = `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&maxResults=3&id=${id}&type=channel&key=${
-        import.meta.env.VITE_API_KEY
+        apiKey
       }`;
       const data = await fetch(URL);
       const obj = await data.json();

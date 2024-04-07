@@ -3,7 +3,7 @@ const AllContext = createContext();
 export const useAllContext = () => useContext(AllContext);
 export const ValueFormatterProvider = ({ children }) => {
   //* hover shadow state
-  const [hover,setHover] = useState(null)
+  const [hover, setHover] = useState(null)
 
   //? Channel filter search
   const [countryCode, setCountryCode] = useState('IN')
@@ -11,6 +11,21 @@ export const ValueFormatterProvider = ({ children }) => {
   //? Category filter search
   const [catergoryCode, setCatergoryCode] = useState(1)
 
+  //? API KEY CONTEXT
+  const [apiKey, setApiKey] = useState('')
+  //? API NAME CONTEXT
+  const [apiName, setApiName] = useState('Choose A Key First')
+
+  //? ACTIVE STATE
+  const [active, setActive] = useState('channels')
+
+  const handleActive = (link) => {
+    setActive(link)
+  }
+
+
+
+  //? FORMAT NUMBER METHOD
   const formatNumber = (number) => {
     if (isNaN(number)) {
       return "Invalid number";
@@ -27,7 +42,7 @@ export const ValueFormatterProvider = ({ children }) => {
   };
 
   return (
-    <AllContext.Provider value={{ formatNumber,hover,setHover,countryCode,setCountryCode,catergoryCode, setCatergoryCode }}>
+    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName,active, setActive,handleActive }}>
       {children}
     </AllContext.Provider>
   );

@@ -9,10 +9,11 @@ import ErrorMessage from "./SmallComponents/ErrorMessage";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 import { useAllContext } from "./Context/AllContextAPI";
 import Pagination from "./SmallComponents/Pagination";
+import ApiKey from "./SmallComponents/ApiKey";
 
 function Homepage() {
   //? Context API
-  const {countryCode} = useAllContext()
+  const {countryCode,apiKey} = useAllContext()
 
   //! states
   const [youtubeData, setYoutubeData] = useState([]);
@@ -26,9 +27,7 @@ function Homepage() {
   const videoInfo = async (query) => {
     setLoader(true);
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=channel&regionCode=${countryCode}&key=${
-        import.meta.env.VITE_API_KEY
-      }`;
+      const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&type=channel&regionCode=${countryCode}&key=${apiKey}`;
       setProgress(25);
       const data = await fetch(URL);
       if (data.status != 200) {
@@ -44,8 +43,8 @@ function Homepage() {
       setYoutubeData(items);
       setTotalResults(totalResults)
       setProgress(100);
-    } catch (err){
-      console.error(err)
+    } catch (error){
+      console.error(error.message)
       setProgress(100)
     }
   };
@@ -81,6 +80,7 @@ function Homepage() {
       <div className="container d-flex flex-wrap justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults} />
         <CountryFilter/>
+        <ApiKey/>
       </div>
       {channelId.length != 0 ? (
         <div>

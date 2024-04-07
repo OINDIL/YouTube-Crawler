@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useAllContext} from '../Context/AllContextAPI'
 
 const VideosCard = ({ data,index }) => {
-  const {formatNumber,hover,setHover} = useAllContext();
+  const {formatNumber,hover,setHover,apiKey} = useAllContext();
   const [video, setVideo] = useState([
     {
       title:'Undefined',
@@ -21,7 +21,7 @@ const VideosCard = ({ data,index }) => {
   ])
   const channelInfo = async (id) => {
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${import.meta.env.VITE_API_KEY}`
+      const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${apiKey}}`
       const data = await fetch(URL, {
         method: 'GET',
         mode: 'cors',
