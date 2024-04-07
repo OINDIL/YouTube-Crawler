@@ -74,7 +74,7 @@ const Videos = () => {
       <div className="container mt-3">
         <SearchBar getData={getData} componentError={ErrorLoader}/>
       </div>
-      <div className="container d-flex justify-content-center mb-3 gap-2">
+      <div className="container d-flex flex-wrap justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults}/>
         <CountryFilter/>
         <CategoryFilter/>

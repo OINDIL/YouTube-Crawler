@@ -8,6 +8,7 @@ import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import ErrorMessage from "./SmallComponents/ErrorMessage";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 import { useAllContext } from "./Context/AllContextAPI";
+import Pagination from "./SmallComponents/Pagination";
 
 function Homepage() {
   //? Context API
@@ -29,7 +30,6 @@ function Homepage() {
       }`;
       setProgress(25);
       const data = await fetch(URL);
-      console.log(data);
       if (data.status != 200) {
         setErrorLoader(true);
         setProgress(100);
@@ -37,7 +37,7 @@ function Homepage() {
       }
       const obj = await data.json();
       setProgress(50);
-      const { items, pageInfo:{totalResults} } = obj;
+      const { items, pageInfo:{totalResults},nextPageToken } = obj;
       setProgress(90);
       setYoutubeData(items);
       setTotalResults(totalResults)
@@ -76,7 +76,7 @@ function Homepage() {
       <div className="container mt-3">
         <SearchBar getData={getData} componentError={ErrorLoader}/>
       </div>
-      <div className="container d-flex justify-content-center mb-3 gap-2">
+      <div className="container d-flex flex-wrap justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults} />
         <CountryFilter/>
       </div>
@@ -96,6 +96,7 @@ function Homepage() {
       ) : (
         <Empty data={"Search To See Channel stats"} />
       )}
+      {channelId != 0 ? <Pagination/> : null}
     </div>
   );
 }
