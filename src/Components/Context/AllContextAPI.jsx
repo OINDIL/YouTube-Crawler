@@ -23,6 +23,15 @@ export const ValueFormatterProvider = ({ children }) => {
     setActive(link)
   }
 
+  //? PROGRESS BAR STATE
+  const [progress,setProgress] = useState(0)
+  //? Capital First Letter
+  function capitalizeFirstLetter(word) {
+    if (word.length === 0) {
+      return '';
+    }
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
 
 
   //? FORMAT NUMBER METHOD
@@ -42,7 +51,7 @@ export const ValueFormatterProvider = ({ children }) => {
   };
 
   return (
-    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName,active, setActive,handleActive }}>
+    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName, active, setActive, handleActive,capitalizeFirstLetter,progress,setProgress }}>
       {children}
     </AllContext.Provider>
   );
