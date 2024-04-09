@@ -24,10 +24,6 @@ const Navbar = () => {
                                 <Link className={`nav-link ${active === 'signin' ? `fw-bold` : null}`} to="/signin"
                                 onClick={()=>handleActive('signin')}>Login</Link>
                             </li>
-                            <li>
-                                <Link className={`nav-link ${active === 'signup' ? `fw-bold` : null}`} to="/signup"
-                                onClick={()=>handleActive('signup')}>Sign Up</Link>
-                            </li>
                         </ul>
                     </div>
                 </div>
