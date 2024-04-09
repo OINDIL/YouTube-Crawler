@@ -23,7 +23,6 @@ function SignIn() {
       setProgress(30)
       try{
         const userCredentials = await signInWithEmailAndPassword(auth,email,password)
-        console.log(userCredentials);
         const name = userCredentials.user.displayName;
         setProgress(70)
         setName(name)

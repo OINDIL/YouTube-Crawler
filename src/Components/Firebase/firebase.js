@@ -6,12 +6,12 @@ import { connectAuthEmulator, getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAbtu-vPTd_dCckkdsSimbzq2MC41B0dxw",
-  authDomain: "crawler-418109.firebaseapp.com",
-  projectId: "youtube-crawler-418109",
-  storageBucket: "youtube-crawler-418109.appspot.com",
-  messagingSenderId: "177602673070",
-  appId: "1:177602673070:web:cb26e2acb69b79224a703f"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase

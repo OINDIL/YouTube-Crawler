@@ -21,7 +21,7 @@ const VideosCard = ({ data,index }) => {
   ])
   const channelInfo = async (id) => {
     try {
-      const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${apiKey}}`
+      const URL = `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=${apiKey}`
       const data = await fetch(URL, {
         method: 'GET',
         mode: 'cors',
@@ -55,6 +55,8 @@ const VideosCard = ({ data,index }) => {
           commentCount
         }
       ]);
+    }).catch((error)=>{
+      console.error(error.message)
     })
   }, [data])
   return (

@@ -30,6 +30,8 @@ function SignUp() {
             setProgress(100)
             setPopUp(true)
         } catch (err) {
+            setProgress(100)
+            setErrorLoader(true)
         }
     }
     return (
@@ -45,8 +47,8 @@ function SignUp() {
             <div className="error-loader position-relative">
                 {ErrorLoader ? (
                     <ErrorMessage
-                        title={"Wrong Credentials"}
-                        message={"Review Your Given Data"}
+                        title={"Account Creation Error"}
+                        message={"Can't Creat an Account"}
                         buttonMessage={"Try Again"}
                         setErrorLoader={setErrorLoader}
                     />
