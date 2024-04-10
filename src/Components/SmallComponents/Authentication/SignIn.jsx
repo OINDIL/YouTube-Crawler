@@ -49,24 +49,28 @@ function SignIn() {
           onLoaderFinished={() => setProgress(0)}
         />
       ) : null}
-      <form className='container border rounded p-3 shadow-lg' onSubmit={handleSubmit} style={{ maxWidth: '600px', marginTop: '70px' }}>
-        <div className="error-loader position-relative">
-          {ErrorLoader ? (
-            <Alert message={"Invalid Credentials"} type={"danger"} setButton={setErrorLoader} />
-          ) : null}
-          {successSignedUp ? <Alert message={`You are logged in as ${name}`} type={"success"} setButton={setSuccessSignedUp} /> : null}
+      <div className="container d-flex justify-content-center align-items-center" style={{minHeight:'100svh'}}>
+        <div className="w-100" style={{maxWidth:'500px'}}>
+        <form className='border rounded p-3 shadow' onSubmit={handleSubmit}>
+          <div className="error-loader position-relative">
+            {ErrorLoader ? (
+              <Alert message={"Invalid Credentials"} type={"danger"} setButton={setErrorLoader} />
+            ) : null}
+            {successSignedUp ? <Alert message={`You are logged in as ${name}`} type={"success"} setButton={setSuccessSignedUp} /> : null}
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputEmail1" className="form-label fw-medium">Email address</label>
+            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='mail@mail.com' onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputPassword1" className="form-label fw-medium">Password</label>
+            <input type="password" className="form-control" id="exampleInputPassword1" placeholder='Enter Your Password' onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <p className='fw-medium'>Create an account instead, <Link to="/signup" className='text-decoration-none'>Sign Up</Link></p>
+          <button type="submit" className="btn btn-success" disabled={successSignedUp || loader || ErrorLoader}>Sign In</button>
+        </form>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label fw-medium">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='mail@mail.com' onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label fw-medium">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder='Enter Your Password' onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <p className='fw-medium'>Create an account instead, <Link to="/signup" className='text-decoration-none'>Sign Up</Link></p>
-        <button type="submit" className="btn btn-success" disabled={successSignedUp || loader || ErrorLoader}>Sign In</button>
-      </form>
+      </div>
     </div>
   )
 }
