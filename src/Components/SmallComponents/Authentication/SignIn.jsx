@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { auth } from '../../Firebase/firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import LoadingBar from 'react-top-loading-bar'
 import { useAllContext } from '../../Context/AllContextAPI'
-import { Link } from 'react-router-dom'
+import { useNavigate ,Link } from 'react-router-dom'
 import Alert from './Small Components/Alert'
+import { useAuth } from '../../Context/AuthContext'
 
 function SignIn() {
+  //CONTEXTS
+  const {login} = useAuth()
   const { progress, setProgress } = useAllContext()
   // states
-
   const [loader, setLoader] = useState(false)
   const [ErrorLoader, setErrorLoader] = useState(false)
   const [email, setEmail] = useState('')
@@ -17,7 +17,8 @@ function SignIn() {
   const [name, setName] = useState('')
   const [successSignedUp, setSuccessSignedUp] = useState(false)
 
-
+  // Navigation
+  const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault()
     if (email === '' || password === '') {
@@ -27,11 +28,12 @@ function SignIn() {
     setLoader(true)
     setProgress(30)
     try {
-      const userCredentials = await signInWithEmailAndPassword(auth, email, password)
+      const userCredentials = await login( email, password)
       const name = userCredentials.user.displayName;
       setProgress(70)
       setName(name)
       setSuccessSignedUp(true)
+      navigate("/dashboard")
       setProgress(100)
       setLoader(false)
     } catch (err) {
@@ -58,6 +60,7 @@ function SignIn() {
             ) : null}
             {successSignedUp ? <Alert message={`You are logged in as ${name}`} type={"success"} setButton={setSuccessSignedUp} /> : null}
           </div>
+          <h2 className='text-center'>Log In</h2>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label fw-medium">Email address</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='mail@mail.com' onChange={(e) => setEmail(e.target.value)} />
