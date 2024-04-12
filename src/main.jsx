@@ -13,6 +13,7 @@ import SignUp from './Components/SmallComponents/Authentication/SignUp.jsx';
 import { AuthProvider } from './Components/Context/AuthContext.jsx';
 import Dashboard from './Components/SmallComponents/Authentication/Dashboard.jsx';
 import PrivateRouter from './Components/Private Router/PrivateRouter.jsx';
+import ForgotPassword from './Components/SmallComponents/Authentication/ForgotPassword.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         <Navbar />
         <Dashboard/>
       </PrivateRouter>
+  },
+  {
+    path:'/forgot-password',
+    element: <><Navbar /><ForgotPassword /></>
   }
 ])
 

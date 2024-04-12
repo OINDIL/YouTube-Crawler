@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import LoadingBar from 'react-top-loading-bar'
 import { useAllContext } from '../../Context/AllContextAPI'
-import { useNavigate ,Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Alert from './Small Components/Alert'
 import { useAuth } from '../../Context/AuthContext'
 
 function SignIn() {
   //CONTEXTS
-  const {login} = useAuth()
+  const { login } = useAuth()
   const { progress, setProgress } = useAllContext()
   // states
   const [loader, setLoader] = useState(false)
@@ -28,7 +28,7 @@ function SignIn() {
     setLoader(true)
     setProgress(30)
     try {
-      const userCredentials = await login( email, password)
+      const userCredentials = await login(email, password)
       const name = userCredentials.user.displayName;
       setProgress(70)
       setName(name)
@@ -51,27 +51,28 @@ function SignIn() {
           onLoaderFinished={() => setProgress(0)}
         />
       ) : null}
-      <div className="container d-flex justify-content-center align-items-center" style={{minHeight:'100svh'}}>
-        <div className="w-100" style={{maxWidth:'500px'}}>
-        <form className='border rounded p-3 shadow' onSubmit={handleSubmit}>
-          <div className="error-loader position-relative">
-            {ErrorLoader ? (
-              <Alert message={"Invalid Credentials"} type={"danger"} setButton={setErrorLoader} />
-            ) : null}
-            {successSignedUp ? <Alert message={`You are logged in as ${name}`} type={"success"} setButton={setSuccessSignedUp} /> : null}
-          </div>
-          <h2 className='text-center'>Log In</h2>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label fw-medium">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='mail@mail.com' onChange={(e) => setEmail(e.target.value)} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label fw-medium">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" placeholder='Enter Your Password' onChange={(e) => setPassword(e.target.value)} />
-          </div>
-          <p className='fw-medium'>Create an account instead, <Link to="/signup" className='text-decoration-none'>Sign Up</Link></p>
-          <button type="submit" className="btn btn-success" disabled={successSignedUp || loader || ErrorLoader}>Sign In</button>
-        </form>
+      <div className="container d-flex justify-content-center align-items-center" style={{ minHeight: '100svh' }}>
+        <div className="w-100" style={{ maxWidth: '500px' }}>
+          <form className='border rounded p-3 shadow' onSubmit={handleSubmit}>
+            <div className="error-loader position-relative">
+              {ErrorLoader ? (
+                <Alert message={"Invalid Credentials"} type={"danger"} setButton={setErrorLoader} />
+              ) : null}
+              {successSignedUp ? <Alert message={`You are logged in as ${name}`} type={"success"} setButton={setSuccessSignedUp} /> : null}
+            </div>
+            <h2 className='text-center'>Sign In</h2>
+            <div className="mb-3">
+              <label htmlFor="exampleInputEmail1" className="form-label fw-medium">Email address</label>
+              <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder='mail@mail.com' onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleInputPassword1" className="form-label fw-medium">Password</label>
+              <input type="password" className="form-control" id="exampleInputPassword1" placeholder='Enter Your Password' onChange={(e) => setPassword(e.target.value)} />
+            </div>
+            <p className='fw-medium'>Create an account instead, <Link to="/signup" className='text-decoration-none'>Sign Up</Link></p>
+            <button type="submit" className="btn btn-success" disabled={successSignedUp || loader || ErrorLoader}>Sign In</button>
+            <Link to='/forgot-password' style={{ marginLeft: '5px', textDecoration: 'none' }}>Forgot Password?</Link>
+          </form>
         </div>
       </div>
     </div>
