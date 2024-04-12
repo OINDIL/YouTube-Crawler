@@ -14,6 +14,7 @@ import { AuthProvider } from './Components/Context/AuthContext.jsx';
 import Dashboard from './Components/SmallComponents/Authentication/Dashboard.jsx';
 import PrivateRouter from './Components/Private Router/PrivateRouter.jsx';
 import ForgotPassword from './Components/SmallComponents/Authentication/ForgotPassword.jsx';
+import UpdateProfile from './Components/SmallComponents/Authentication/UpdateProfile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <><Navbar /><SignUp /></>
+  },
+  {
+    path: '/update-profile',
+    element:
+      <PrivateRouter>
+        <Navbar />
+        <UpdateProfile/>
+      </PrivateRouter>
   },
   {
     path: '/dashboard',

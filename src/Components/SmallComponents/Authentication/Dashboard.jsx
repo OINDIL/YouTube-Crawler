@@ -31,11 +31,7 @@ export default function Dashboard() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="exampleInputName" className="form-label fw-medium">Name</label>
-                            <input type="email" className="form-control" id="exampleInputName" aria-describedby="emailHelp" value={currentUser.displayName} disabled />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputPhone" className="form-label fw-medium">Phone Number</label>
-                            <input type="email" className="form-control" id="exampleInputPhone" aria-describedby="emailHelp" value={!currentUser.phoneNumber ? 'Not Available' : currentUser.phoneNumber} disabled />
+                            <input type="text" className="form-control" id="exampleInputName" aria-describedby="emailHelp" value={currentUser.displayName} disabled />
                         </div>
                         <button type="submit" className="btn btn-danger" onClick={handleLogOut} style={{ marginRight: '3px' }}>Log Out</button>
                         <button type="submit" className="btn btn-primary"><Link className='text-decoration-none text-light' to="/update-profile">Update Profile</Link></button>
