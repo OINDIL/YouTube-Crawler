@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import ChannelData from './Components/ChannelsData.jsx';
 import Videos from './Components/Videos.jsx';
 import { ValueFormatterProvider } from './Components/Context/AllContextAPI.jsx';
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -13,11 +12,12 @@ import SignIn from './Components/SmallComponents/Authentication/SignIn.jsx';
 import SignUp from './Components/SmallComponents/Authentication/SignUp.jsx';
 import { AuthProvider } from './Components/Context/AuthContext.jsx';
 import Dashboard from './Components/SmallComponents/Authentication/Dashboard.jsx';
+import PrivateRouter from './Components/Private Router/PrivateRouter.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <><Navbar /><ChannelData /></>
+    element: <><Navbar /><ChannelData /></>,
   },
   {
     path: '/videos',
@@ -33,9 +33,14 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <><Navbar /><Dashboard /></>
+    element:
+      <PrivateRouter>
+        <Navbar />
+        <Dashboard/>
+      </PrivateRouter>
   }
 ])
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
