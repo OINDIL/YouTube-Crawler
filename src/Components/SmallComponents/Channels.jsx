@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {useAllContext} from '../Context/AllContextAPI'
+import { LiaVideoSolid } from "react-icons/lia";
+import { CgProfile } from "react-icons/cg";
+import { IoIosInformationCircleOutline } from "react-icons/io";
+import { BsGraphUpArrow } from "react-icons/bs";
 
 function NewCard({ videoId,index}) {
   const { formatNumber,hover,setHover,apiKey } = useAllContext();
@@ -73,7 +77,7 @@ function NewCard({ videoId,index}) {
   }, [videoId]);
   return (
     <div>
-      <div className={`card ${hover === index ? `shadow-lg` : null}`} style={{ width: "15rem" }} onMouseEnter={()=>setHover(index)}
+      <div className={`card ${hover === index ? `shadow-lg` : null}`} style={{ width: "18rem" }} onMouseEnter={()=>setHover(index)}
       onMouseLeave={()=>setHover(null)}
       >
         <img
@@ -103,18 +107,18 @@ function NewCard({ videoId,index}) {
             200
           )}...`}</p>
         </div>
-        <ul className="list-group list-group-flush fw-bold">
-          <li className="list-group-item">
-            {formatNumber(items[0].subscriberCount)} Subscribers
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item d-flex align-items-center gap-2">
+            <CgProfile/>{formatNumber(items[0].subscriberCount)} Subscribers
           </li>
-          <li className="list-group-item">
-            Creation Date: {date.day}-{date.month}-{date.year}
+          <li className="list-group-item d-flex align-items-center gap-2">
+            <IoIosInformationCircleOutline/>Joined {date.day}-{date.month}-{date.year}
           </li>
-          <li className="list-group-item">
-            {formatNumber(items[0].videoCount)} Videos
+          <li className="list-group-item d-flex align-items-center gap-2">
+            <LiaVideoSolid/> {formatNumber(items[0].videoCount)} Videos
           </li>
-          <li className="list-group-item">
-            {formatNumber(items[0].viewCount)} Views
+          <li className="list-group-item d-flex align-items-center gap-2">
+            <BsGraphUpArrow/>{formatNumber(items[0].viewCount)} Views
           </li>
         </ul>
       </div>
