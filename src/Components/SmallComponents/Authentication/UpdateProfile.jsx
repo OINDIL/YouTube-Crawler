@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../Context/AuthContext'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Alert from './Small Components/Alert'
 import { useAllContext } from '../../Context/AllContextAPI'
 import LoadingBar from 'react-top-loading-bar'
@@ -10,12 +10,13 @@ export default function UpdateProfile() {
     const { progress, setProgress } = useAllContext()
     //STATES
     const [email, setEmail] = useState('')
-    const [oldPassword, setOldPassword] = useState('')
-    const [newPassword, setNewPassword] = useState('')
+    const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [ErrorLoader, setErrorLoader] = useState(false)
     const [loader, setLoader] = useState(false)
 
+
+    const navigation = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault()
         setLoader(true)
@@ -24,8 +25,8 @@ export default function UpdateProfile() {
             promises.push(updateEmailFunc(email))
         }
         setProgress(30)
-        if (oldPassword === newPassword) {
-            promises.push(updatePasswordFunc(newPassword))
+        if(password !== ''){
+            promises.push(updatePasswordFunc(password))
         }
         setProgress(60)
         if (name !== '') {
@@ -33,10 +34,8 @@ export default function UpdateProfile() {
         }
         setProgress(90)
         console.log(promises);
-        Promise.all(promises).then(() => {
-            Navigate({
-                to: '/dashboard'
-            })
+        Promise.all(promises).then(function () {
+            navigation('/dashboard')
         }).catch(() => {
             setErrorLoader(true)
         }).finally(() => {
@@ -75,15 +74,9 @@ export default function UpdateProfile() {
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="exampleInputOldPassword" className="form-label fw-medium">Old Password</label>
-                            <input type="text" className="form-control" id="exampleInputOldPassword" aria-describedby="emailHelp" placeholder='Enter Old Password'
-                                onChange={(e) => setOldPassword(e.target.value)}
-                            />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="exampleInputNewPassword" className="form-label fw-medium">New Password</label>
-                            <input type="text" className="form-control" id="exampleInputNewPassword" aria-describedby="emailHelp" placeholder='Enter New Password'
-                                onChange={(e) => setNewPassword(e.target.value)}
+                            <label htmlFor="exampleInputOldPassword" className="form-label fw-medium">New Password</label>
+                            <input type="text" className="form-control" id="exampleInputOldPassword" aria-describedby="emailHelp" placeholder='Enter New Password'
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
                         <button type='submit' className='btn btn-success' style={{ marginRight: '4px' }}disabled={loader}>Save</button>
