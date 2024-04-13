@@ -9,7 +9,7 @@ import { useAuth } from '../../Context/AuthContext'
 function SignUp() {
     // CONTEXTS
     const { progress, setProgress } = useAllContext()
-    const {signUp } = useAuth()
+    const { signUp,verifyEmail } = useAuth()
     // STATES
     const [successSignedUp, setSuccessSignedUp] = useState(false)
     const [loader, setLoader] = useState(false)
@@ -35,6 +35,7 @@ function SignUp() {
             await updateProfile(user, {
                 displayName: name.toUpperCase()
             })
+            await verifyEmail(user)
             setProgress(100)
             setSuccessSignedUp(true)
             setLoader(false)
