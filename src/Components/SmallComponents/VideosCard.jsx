@@ -4,6 +4,8 @@ import { BiSolidLike,BiSolidComment } from "react-icons/bi";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IoLanguage } from "react-icons/io5";
+import { FaRegCirclePlay } from "react-icons/fa6";
+
 
 const VideosCard = ({ data,index }) => {
   function getLanguageName(isoCode) {
@@ -25,6 +27,7 @@ const VideosCard = ({ data,index }) => {
       'bm': 'Bambara',
       'eu': 'Basque',
       'be': 'Belarusian',
+      'bn-IN': 'Bengali',
       'bn': 'Bengali',
       'bh': 'Bihari languages',
       'bi': 'Bislama',
@@ -196,7 +199,7 @@ const VideosCard = ({ data,index }) => {
     if (isoCode in languageNames) {
       return languageNames[isoCode];
     } else {
-      return 'Unknown';
+      return isoCode;
     }
   }
   
@@ -274,15 +277,17 @@ const VideosCard = ({ data,index }) => {
         <li className="list-group-item d-flex align-items-center gap-2"><BiSolidLike/>{formatNumber(video[0].likeCount)}</li>
         <li className="list-group-item d-flex align-items-center gap-2"><BiSolidComment/>{formatNumber(video[0].commentCount)}</li>
         <li className="list-group-item d-flex align-items-center gap-2"><BsGraphUpArrow/>{formatNumber(video[0].viewCount)} views</li>
-          <li className="list-group-item"><span className='fw-bold'>Tags Used:</span> {video[0].tags.map((tag)=>{
+          <li className="list-group-item"><span className='fw-medium'>Tags Used:</span><span className="text-primary">
+          {video[0].tags.map((tag)=>{
             return ` #${tag}`
           })}
+          </span>
           </li>
           <li className="list-group-item d-flex align-items-center gap-2"><IoIosInformationCircleOutline/>Joined {video[0].day}-{video[0].month}-{video[0].year}</li>
           <li className="list-group-item d-flex align-items-center gap-2"><IoLanguage/>{getLanguageName(video[0].defaultAudioLanguage)}</li>
         </ul>
         <div className="card-body text-center">
-          <a href={`https://www.youtube.com/watch?v=${data}`} className="card-link text-decoration-none" target='_blank'>Watch video</a>
+          <a href={`https://www.youtube.com/watch?v=${data}`} className="card-link text-decoration-none text-danger" target='_blank'><FaRegCirclePlay/> Watch video</a>
         </div>
       </div>
     </div>

@@ -96,7 +96,7 @@ function Homepage() {
           </div>
         </div>
       ) : (
-        <Empty data={"Search To See Channel stats"} />
+          <Empty data={"Search To See Channel stats"} />
       )}
       <div className="container">
       {channelId != 0 ? <Pagination paginationToken={paginationToken} recordsPerPage={maxResults} totalResults={totalResults} data={channelId}/> : null}

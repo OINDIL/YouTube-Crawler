@@ -25,6 +25,9 @@ export const ValueFormatterProvider = ({ children }) => {
 
   //? PROGRESS BAR STATE
   const [progress,setProgress] = useState(0)
+
+  //? Search bar input state
+  const [input, setInput] = useState('')
   //? Capital First Letter
   function capitalizeFirstLetter(word) {
     if (word.length === 0) {
@@ -51,7 +54,7 @@ export const ValueFormatterProvider = ({ children }) => {
   };
 
   return (
-    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName, active, setActive, handleActive,capitalizeFirstLetter,progress,setProgress }}>
+    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName, active, setActive, handleActive,capitalizeFirstLetter,progress,setProgress,input, setInput }}>
       {children}
     </AllContext.Provider>
   );

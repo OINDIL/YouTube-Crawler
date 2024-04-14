@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import ErrorMessage from './ErrorMessage'
+import { useAllContext } from '../Context/AllContextAPI'
 
 function SearchBar({ getData, componentError }) {
-    const [input, setInput] = useState('')
+    const {input, setInput} = useAllContext()
     const [ErrorLoader, setErrorLoader] = useState(false)
     const handleInput = (event) => {
         setInput(event.target.value)
@@ -33,6 +34,7 @@ function SearchBar({ getData, componentError }) {
                     onChange={handleInput}
                     onKeyDown={handleEnterKey}
                     disabled={ErrorLoader || componentError}
+                    defaultValue={input}
                 />
                 <button className="btn btn-danger" type="button" id="button-addon2" onClick={handleClick} disabled={ErrorLoader || componentError}>Search</button>
             </div>

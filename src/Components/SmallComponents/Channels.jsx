@@ -71,13 +71,13 @@ function NewCard({ videoId,index}) {
   useEffect(() => {
     channelInfo(videoId);
 
-    return ()=>{
-      channelInfo(videoId)
-    }
+    // return ()=>{
+    //   channelInfo(videoId)
+    // }
   }, [videoId]);
   return (
     <div>
-      <div className={`card ${hover === index ? `shadow-lg` : null}`} style={{ width: "18rem" }} onMouseEnter={()=>setHover(index)}
+      <div className={`card ${hover === index ? `shadow` : null}`} style={{ width: "18rem" }} onMouseEnter={()=>setHover(index)}
       onMouseLeave={()=>setHover(null)}
       >
         <img
@@ -89,7 +89,7 @@ function NewCard({ videoId,index}) {
           <h5 className="card-title">
             {items[0].customUrl ? (
               <a
-                className="link-opacity-75-hover"
+                className="link-opacity-75-hover text-decoration-none"
                 href={`https://www.youtube.com/${items[0].customUrl}`}
                 target="_blank"
               >
@@ -102,7 +102,7 @@ function NewCard({ videoId,index}) {
           <h6 className="card-subtitle text-body-secondary">
             {items[0].customUrl} | {items[0].country}
           </h6>
-          <p className="card-text">{`${items[0].description.slice(
+          <p className="card-text">{`${(items[0].description).slice(
             0,
             200
           )}...`}</p>

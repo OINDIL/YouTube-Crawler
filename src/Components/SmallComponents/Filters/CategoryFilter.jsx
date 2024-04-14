@@ -30,7 +30,7 @@ function CategoryFilter() {
         <div>
             <div className="dropdown">
                 <button
-                    className="btn btn-warning dropdown-toggle"
+                    className="btn dropdown-toggle"
                     type="button"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
