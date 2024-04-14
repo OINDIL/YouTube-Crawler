@@ -15,6 +15,7 @@ import Dashboard from './Components/SmallComponents/Authentication/Dashboard.jsx
 import PrivateRouter from './Components/Private Router/PrivateRouter.jsx';
 import ForgotPassword from './Components/SmallComponents/Authentication/ForgotPassword.jsx';
 import UpdateProfile from './Components/SmallComponents/Authentication/UpdateProfile.jsx';
+import './CSS/input.css'
 
 const router = createBrowserRouter([
   {

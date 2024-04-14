@@ -33,7 +33,6 @@ export default function UpdateProfile() {
             promises.push(updateDisplayName(name))
         }
         setProgress(90)
-        console.log(promises);
         Promise.all(promises).then(function () {
             navigation('/dashboard')
         }).catch(() => {
