@@ -36,6 +36,7 @@ function SearchBar({ getData, componentError }) {
                 />
                 <button className="btn btn-danger" type="button" id="button-addon2" onClick={handleClick} disabled={ErrorLoader || componentError}>Search</button>
             </div>
+
         </div>
     )
 }

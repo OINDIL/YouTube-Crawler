@@ -259,6 +259,7 @@ const VideosCard = ({ data,index }) => {
   }, [data])
   return (
     <div>
+      
       <div className={`card ${hover === index ? `shadow-lg` : null}`} style={{width:'18rem'}}
       onMouseEnter={()=>setHover(index)}
       onMouseLeave={()=>setHover(null)}
