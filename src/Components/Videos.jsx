@@ -8,7 +8,6 @@ import ErrorMessage from "./SmallComponents/ErrorMessage";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 import { useAllContext } from "./Context/AllContextAPI";
-import CategoryFilter from "./SmallComponents/Filters/CategoryFilter";
 import ApiKey from "./SmallComponents/ApiKey";
 
 const Videos = () => {

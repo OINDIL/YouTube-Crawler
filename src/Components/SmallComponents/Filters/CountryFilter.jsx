@@ -279,8 +279,8 @@ function CountryFilter() {
                     Country: {countryCode}
                 </button>
                 <ul
-                    className="dropdown-menu text-center overflow-y-auto p-3"
-                    style={{ cursor: "pointer", maxHeight: "500px" }}
+                    className="dropdown-menu text-center overflow-x-hidden p-3"
+                    style={{ cursor: "pointer", maxHeight: "500px",maxWidth:'200px',scrollbarWidth:'thin' }}
                 >
                     <div className="input-group mb-3">
                         <input
@@ -296,7 +296,7 @@ function CountryFilter() {
                     {filteredSearch.map((items, index) => (
                         <div key={index}>
                             <li>
-                                <a className="dropdown-item" onClick={()=>setCountryCode(items.code)}>{items.name}</a>
+                                <p className="dropdown-item" onClick={()=>setCountryCode(items.code)}>{items.name}</p>
                             </li>
                         </div>
                     ))}
