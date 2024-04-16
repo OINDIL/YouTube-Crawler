@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Alert from './Small Components/Alert'
 import { useAllContext } from '../../Context/AllContextAPI'
 import LoadingBar from 'react-top-loading-bar'
+import { Link } from 'react-router-dom'
 
 export default function UpdateProfile() {
     const { updateEmailFunc, updatePasswordFunc, updateDisplayName, currentUser } = useAuth()
@@ -79,7 +80,7 @@ export default function UpdateProfile() {
                             />
                         </div>
                         <button type='submit' className='btn btn-success' style={{ marginRight: '4px' }}disabled={loader}>Save</button>
-                        <a className="btn btn-primary" href="/dashboard" role="button">Go Back</a>
+                        <Link className="btn btn-primary" to="/dashboard" role="button">Go Back</Link>
                     </form>
                 </div>
             </div>
