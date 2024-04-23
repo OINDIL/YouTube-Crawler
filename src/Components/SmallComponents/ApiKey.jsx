@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {useAllContext} from '../Context/AllContextAPI'
 function ApiKey() {
     const {setApiKey,apiName,setApiName} = useAllContext()
+    
     
     const apiKeys = [
         {name:'API 1', key:'AIzaSyBJQP4LAiQBUA5q_Y_plVQg6hn2dIQFdFg'},
@@ -11,6 +12,7 @@ function ApiKey() {
         setApiKey(key)
         setApiName(name)
     }
+
     return (
         <div>
             <div className="dropdown">

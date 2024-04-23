@@ -77,7 +77,6 @@ const Videos = () => {
       <div className="container d-flex flex-wrap justify-content-center mb-3 gap-2">
         <MaxResultsFilter maxResults={maxResults} setMaxResults={setMaxResults}/>
         <CountryFilter/>
-        <ApiKey/>
       </div>
       {videoId != 0 ? (
         <div>

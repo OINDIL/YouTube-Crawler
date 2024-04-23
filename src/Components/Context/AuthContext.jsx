@@ -7,6 +7,7 @@ const AuthContext = createContext()
 export const useAuth = () => useContext(AuthContext); // useAuth will be imported to all the files
 
 export function AuthProvider({ children }) {
+
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
     const signUp = (email,password) =>{
