@@ -7,9 +7,6 @@ const Navbar = () => {
     const { currentUser } = useAuth()
     const { active, handleActive } = useAllContext()
 
-    // STATES
-    const [userName, setUserName] = useState()
-
     return (
         <div>
             <nav className="navbar fixed-top navbar-expand-lg bg-body-tertiary">
@@ -21,7 +18,7 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className={`nav-link ${active === 'channels' ? `fw-bold` : null}`} aria-current="page" onClick={() => handleActive('channels')} to="/">Channels</Link>
+                                <Link className={`nav-link ${active === 'channels' ? `fw-bold` : null}`} aria-current="page" onClick={() => handleActive('channels')} to="/channels">Channels</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link ${active === 'videos' ? `fw-bold` : null}`} onClick={() => handleActive('videos')} to="/videos">Videos</Link>

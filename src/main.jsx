@@ -15,10 +15,15 @@ import Dashboard from './Components/SmallComponents/Authentication/Dashboard.jsx
 import PrivateRouter from './Components/Private Router/PrivateRouter.jsx';
 import ForgotPassword from './Components/SmallComponents/Authentication/ForgotPassword.jsx';
 import UpdateProfile from './Components/SmallComponents/Authentication/UpdateProfile.jsx';
+import Homepage from './Components/Homepage.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <><Navbar /><Homepage /></>,
+  },
+  {
+    path: '/channels',
     element: <><Navbar /><ChannelData /></>,
   },
   {
