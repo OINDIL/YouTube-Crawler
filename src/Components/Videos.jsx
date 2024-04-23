@@ -8,7 +8,6 @@ import ErrorMessage from "./SmallComponents/ErrorMessage";
 import MaxResultsFilter from "./SmallComponents/Filters/MaxResultsFilter";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 import { useAllContext } from "./Context/AllContextAPI";
-import ApiKey from "./SmallComponents/ApiKey";
 
 const Videos = () => {
     //? Context API
@@ -65,7 +64,7 @@ const Videos = () => {
         {ErrorLoader ? (
           <ErrorMessage
             title={"Api Error"}
-            message={"There is an error with the API"}
+            message={"Login and Set the API key first"}
             buttonMessage={"Exit"}
             setErrorLoader={setErrorLoader}
           />

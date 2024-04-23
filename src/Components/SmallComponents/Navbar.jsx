@@ -28,8 +28,8 @@ const Navbar = () => {
                             </li>
                             <li>
                                 {currentUser ? <Link className={`nav-link  ${active === currentUser.displayName ? `fw-bold` : null}`} to="/dashboard"
-                                    onClick={()=> handleActive(currentUser.displayName)}
-                                    >{currentUser.displayName}</Link>
+                                    onClick={() => handleActive(currentUser.displayName)}
+                                >{currentUser.displayName}</Link>
                                     :
                                     <Link className={`nav-link ${active === 'signin' ? `fw-bold` : null}`} to="/signin"
                                         onClick={() => handleActive('signin')}>Login</Link>

@@ -9,7 +9,6 @@ import ErrorMessage from "./SmallComponents/ErrorMessage";
 import CountryFilter from "./SmallComponents/Filters/CountryFilter";
 import { useAllContext } from "./Context/AllContextAPI";
 import Pagination from "./SmallComponents/Pagination";
-import ApiKey from "./SmallComponents/ApiKey";
 
 function Homepage() {
   //? Context API
@@ -68,7 +67,7 @@ function Homepage() {
         {ErrorLoader ? (
           <ErrorMessage
             title={"Api Error"}
-            message={"There is an error with the API"}
+            message={"Login and Set the API key first"}
             buttonMessage={"Exit"}
             setErrorLoader={setErrorLoader}
           />
