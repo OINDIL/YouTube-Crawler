@@ -10,6 +10,8 @@ export function AuthProvider({ children }) {
 
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
+    const [isAdmin, setIsAdmin] = useState(false)
+
     const signUp = (email,password) =>{
         return createUserWithEmailAndPassword(auth,email,password)
     }
@@ -18,6 +20,7 @@ export function AuthProvider({ children }) {
     }
 
     const logOut = () =>{
+        setIsAdmin(false)
         return signOut(auth)
     }
     const resetPassword = (email) =>{
@@ -41,6 +44,9 @@ export function AuthProvider({ children }) {
         const unsubscribe = onAuthStateChanged(auth,(user)=>{
             setCurrentUser(user)
             setLoading(false)
+            if(user.uid === '40KRhuW7K4Vzhj89CDRzEnmlsL12') {
+                setIsAdmin(true)
+            }
         })
  
         return unsubscribe
@@ -48,6 +54,7 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
+        isAdmin,
         signUp,
         login,
         logOut,

@@ -4,7 +4,7 @@ import { useAllContext } from '../Context/AllContextAPI'
 import { useAuth } from '../Context/AuthContext'
 
 const Navbar = () => {
-    const { currentUser } = useAuth()
+    const { currentUser, isAdmin } = useAuth()
     const { active, handleActive } = useAllContext()
 
     return (
@@ -18,19 +18,26 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link className={`nav-link ${active === 'channels' ? `fw-bold` : null}`} aria-current="page" onClick={() => handleActive('channels')} to="/channels">Channels</Link>
+                                <Link className={`nav-link ${active === 'channels' ? `active` : null}`} aria-current="page" onClick={() => handleActive('channels')} to="/channels">Channels</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link ${active === 'videos' ? `fw-bold` : null}`} onClick={() => handleActive('videos')} to="/videos">Videos</Link>
+                                <Link className={`nav-link ${active === 'videos' ? `active` : null}`} onClick={() => handleActive('videos')} to="/videos">Videos</Link>
                             </li>
                             <li>
-                                {currentUser ? <Link className={`nav-link  ${active === currentUser.displayName ? `fw-bold` : null}`} to="/dashboard"
+                                <Link className={`nav-link`} to='/pricing'>Pricing</Link>
+                            </li>
+                            <li>
+                                {currentUser ? <Link className={`nav-link  ${active === currentUser.displayName ? `active` : null}`} to="/dashboard"
                                     onClick={() => handleActive(currentUser.displayName)}
                                 >{currentUser.displayName}</Link>
                                     :
-                                    <Link className={`nav-link ${active === 'signin' ? `fw-bold` : null}`} to="/signin"
+                                    <Link className={`nav-link ${active === 'signin' ? `active` : null}`} to="/signin"
                                         onClick={() => handleActive('signin')}>Login</Link>
                                 }
+                            </li>
+                            <li>
+                                {isAdmin ? <Link className={`nav-link ${active === 'admin' ? `active` : null}`} to='/admin'
+                                    onClick={() => handleActive('signin')}>Admin</Link> : null}
                             </li>
                         </ul>
                     </div>
