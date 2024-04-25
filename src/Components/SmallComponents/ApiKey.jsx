@@ -5,6 +5,7 @@ function ApiKey() {
     
     
     const apiKeys = [
+        {name:'None', key:''},
         {name:'API 1', key:'AIzaSyBJQP4LAiQBUA5q_Y_plVQg6hn2dIQFdFg'},
         {name:'API 2', key:'AIzaSyAbtu-vPTd_dCckkdsSimbzq2MC41B0dxw'}
     ]
@@ -16,7 +17,7 @@ function ApiKey() {
     return (
         <div>
             <div className="dropdown">
-                <button className="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <button className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     API key: {apiName}
                 </button>
                 <ul className="dropdown-menu" style={{cursor:'pointer'}}>

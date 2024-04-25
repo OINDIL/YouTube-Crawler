@@ -3,7 +3,6 @@ import { useAuth } from '../../Context/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { GoUnverified } from "react-icons/go";
-import ApiKey from '../ApiKey';
 import { useAllContext } from '../../Context/AllContextAPI';
 export default function Dashboard() {
     // CONTEXTS
@@ -32,8 +31,6 @@ export default function Dashboard() {
                             <Alert message={"Account Creation Error"} type={"danger"} setButton={setErrorLoader} />
                         ) : null}
                         <h2 className='text-center'>DashBoard</h2>
-
-                        <ApiKey />
                         <div className="mb-3">
                             <label htmlFor="exampleInputEmail1" className="form-label fw-medium">Email address {currentUser.emailVerified ? <RiVerifiedBadgeFill /> : <GoUnverified />}</label>
                             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={currentUser.email} disabled />

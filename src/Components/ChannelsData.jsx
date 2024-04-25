@@ -67,7 +67,7 @@ function Homepage() {
         {ErrorLoader ? (
           <ErrorMessage
             title={"Api Error"}
-            message={"Login and Set the API key first"}
+            message={"Api Key Not Found"}
             buttonMessage={"Exit"}
             setErrorLoader={setErrorLoader}
           />
