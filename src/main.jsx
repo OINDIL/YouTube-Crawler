@@ -20,22 +20,23 @@ import Pricing from './Components/SmallComponents/Pricing.jsx';
 import PageNotFound from './Components/SmallComponents/PageNotFound.jsx';
 import AdminDashboard from './Components/SmallComponents/Authentication/AdminDashboard.jsx';
 import AdminRouter from './Components/Private Router/AdminRouter.jsx';
+import { FirestoreProvider } from './Components/Context/FirestoreContext.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <><Navbar/><Homepage/></>,
-    errorElement:<><Navbar/><PageNotFound/></>,
+    element: <><Navbar /><Homepage /></>,
+    errorElement: <><Navbar /><PageNotFound /></>,
   },
   {
     path: 'channels',
     element: <><Navbar /><ChannelData /></>,
   },
   {
-    path:'/admin',
+    path: '/admin',
     element: <AdminRouter>
-      <Navbar/>
-      <AdminDashboard/>
+      <Navbar />
+      <AdminDashboard />
     </AdminRouter>
   },
   {
@@ -78,10 +79,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <ValueFormatterProvider>
-        <RouterProvider router={router} />
-      </ValueFormatterProvider>
-    </AuthProvider>
+    <FirestoreProvider>
+      <AuthProvider>
+        <ValueFormatterProvider>
+          <RouterProvider router={router} />
+        </ValueFormatterProvider>
+      </AuthProvider>
+    </FirestoreProvider>
   </React.StrictMode>
 )

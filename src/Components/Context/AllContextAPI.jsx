@@ -28,13 +28,6 @@ export const ValueFormatterProvider = ({ children }) => {
 
   //? Search bar input state
   const [input, setInput] = useState('')
-  //? Capital First Letter
-  function capitalizeFirstLetter(word) {
-    if (word.length === 0) {
-      return '';
-    }
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }
 
 
   //? FORMAT NUMBER METHOD
@@ -54,7 +47,7 @@ export const ValueFormatterProvider = ({ children }) => {
   };
 
   return (
-    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName, active, setActive, handleActive,capitalizeFirstLetter,progress,setProgress,input, setInput }}>
+    <AllContext.Provider value={{ formatNumber, hover, setHover, countryCode, setCountryCode, catergoryCode, setCatergoryCode, apiKey, setApiKey, apiName, setApiName, active, setActive, handleActive,progress,setProgress,input, setInput }}>
       {children}
     </AllContext.Provider>
   );

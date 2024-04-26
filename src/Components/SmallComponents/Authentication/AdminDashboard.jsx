@@ -1,10 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ApiKey from '../ApiKey'
 import { useAuth } from '../../Context/AuthContext'
+import 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from '../../Firebase/firebase'
 
 function AdminDashboard() {
   const { logOut } = useAuth()
   const [ErrorLoader, setErrorLoader] = useState(false)
+  const [apiKeys, setApiKeys] = useState([])
+
+
+  const fetchApiKeys = async () => {
+    const querySnapShot = await getDocs(collection(db, "apiKeys"))
+
+    const data = []
+    querySnapShot.forEach((docs) => {
+      data.push({ id: docs.id, ...docs.data() })
+    })
+    setApiKeys(data)
+  }
+  useEffect(() => {
+    fetchApiKeys()
+  }, [])
+
+
 
   const handleLogOut = async (event) => {
     event.preventDefault()
@@ -24,7 +44,7 @@ function AdminDashboard() {
             onSubmit={handleLogOut}>
             <h2>Admin Dashboard</h2>
             <div className="mb-2">
-              <ApiKey />
+              <ApiKey apiKey={apiKeys}/>
             </div>
             <button type="submit" className="btn btn-danger" style={{ marginRight: '3px' }}>Log Out as Admin</button>
           </form>

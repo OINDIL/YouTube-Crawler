@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
         const unsubscribe = onAuthStateChanged(auth,(user)=>{
             setCurrentUser(user)
             setLoading(false)
-            if(user?.uid === '40KRhuW7K4Vzhj89CDRzEnmlsL12') {
+            if(user?.uid === 'XSDcpkKln9M0wDjC1s8xsk39uxE3') {
                 setIsAdmin(true)
             }
         })
