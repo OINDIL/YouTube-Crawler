@@ -24,7 +24,12 @@ import AdminRouter from './Components/Private Router/AdminRouter.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <><Navbar /><Homepage /></>,
+    element: <><Navbar/><Homepage/></>,
+    errorElement:<><Navbar/><PageNotFound/></>,
+  },
+  {
+    path: 'channels',
+    element: <><Navbar /><ChannelData /></>,
   },
   {
     path:'/admin',
@@ -32,10 +37,6 @@ const router = createBrowserRouter([
       <Navbar/>
       <AdminDashboard/>
     </AdminRouter>
-  },
-  {
-    path: '/channels',
-    element: <><Navbar /><ChannelData /></>,
   },
   {
     path: '/videos',
@@ -73,10 +74,6 @@ const router = createBrowserRouter([
     path: '/forgot-password',
     element: <><Navbar /><ForgotPassword /></>
   },
-  {
-    path: '*',
-    element: <><Navbar /><PageNotFound/></>
-  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import screenshot_1 from './Images/sc_2.png'
 import { useAuth } from './Context/AuthContext'
 
